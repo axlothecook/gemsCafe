@@ -1,4 +1,16 @@
 import './style.css';
+import menubgimg from '../food_img_folder/menu-bgimg.jpg';
+import food1 from '../food_img_folder/food1-img.png';
+import food2 from '../food_img_folder/food2-img.png';
+import food3 from '../food_img_folder/food3-img.png';
+import food4 from '../food_img_folder/food4-img.png';
+import food5 from '../food_img_folder/food5-img.png';
+import food6 from '../food_img_folder/food6-img.png';
+import restaurantimg from '../img-folder/restaurant-img.jpg';
+import phosimg from '../img-folder/phos.png';
+import pebbleimg from '../img-folder/pebble.png';
+import slugimg from '../img-folder/bottom-right-img.png';
+
 
 let wrapper = document.getElementById('wrapper');
 
@@ -61,7 +73,7 @@ class MenuPage{
 
         const menuBkImg = document.createElement('img');
         menuBkImg.setAttribute('id', 'menu-bk-img');
-        menuBkImg.src = '../food_img_folder/menu-bgimg.jpg';
+        menuBkImg.src = menubgimg;
         menuImgContainer.appendChild(menuBkImg);
 
         const menuContainer = document.createElement('div');
@@ -77,10 +89,7 @@ class MenuPage{
             foodDiv.classList.add('food-div');
             foodChildWrapper.appendChild(foodDiv);
 
-            let foodImg = document.createElement('img');
-            foodImg.setAttribute('id', `food${i}-img`);
-            foodImg.src = `../food_img_folder/food${i}-img.png`;
-            foodDiv.appendChild(foodImg);
+            createFoodImg(foodDiv, i);
 
             const textDiv = document.createElement('div');
             textDiv.classList.add('text-div');
@@ -229,7 +238,7 @@ class HomePage{
     
         const restaurantImg = document.createElement('img');
         restaurantImg.setAttribute('id', 'restaurant-img');
-        restaurantImg.src = '../img-folder/restaurant-img.jpg';
+        restaurantImg.src = restaurantimg;
         restaurantContainer.appendChild(restaurantImg);
     
         const phosContainer = document.createElement('div');
@@ -238,7 +247,7 @@ class HomePage{
     
         const phosImg = document.createElement('img');
         phosImg.setAttribute('id', 'phos-img');
-        phosImg.src = '../img-folder/phos.png';
+        phosImg.src = phosimg;
         phosContainer.appendChild(phosImg);
     
         const footer = document.createElement('div');
@@ -251,7 +260,7 @@ class HomePage{
     
         const pebbleImg = document.createElement('img');
         pebbleImg.setAttribute('id', 'pebble-img');
-        pebbleImg.src = '../img-folder/pebble.png';
+        pebbleImg.src = pebbleimg;
         bottomLeftDiv.appendChild(pebbleImg);
     
         const bottomRightDiv = document.createElement('div');
@@ -264,12 +273,39 @@ class HomePage{
     
         const bottomRightImg = document.createElement('img');
         bottomRightImg.setAttribute('id', 'bottom-right-img');
-        bottomRightImg.src = '../img-folder/bottom-right-img.png';
+        bottomRightImg.src = slugimg;
         bottomRightDiv.appendChild(bottomRightImg);
     
         return content;
     };
 }
+
+function createFoodImg(foodDiv, i){
+    let foodImg = document.createElement('img');
+    foodImg.setAttribute('id', `food${i}-img`);
+    switch(true){
+        case i === 1:
+            foodImg.src = food1;
+            break;
+        case i === 2:
+            foodImg.src = food2;
+            break;
+        case i === 3:
+            foodImg.src = food3;
+            break;
+        case i === 4:
+            foodImg.src = food4;
+            break;
+        case i === 5:
+            foodImg.src = food5;
+            break;
+        case i === 6:
+            foodImg.src = food6;
+            break;
+    }
+    foodDiv.appendChild(foodImg);
+    return foodImg;
+};
 
 window.addEventListener('DOMContentLoaded', (e) => {
     HomePage.createHomePage();
